@@ -1,0 +1,17 @@
+/*.log
+/target
+/*-init.clj
+out
+.nrepl-port
+/.idea
+*.iml
+node_modules
+resources/public/js
+.cljs_rhino_repl
+android/.gradle
+android/app/build
+android/build
+index.android.js
+index.ios.js
+resources/public/css/
+.lein-repl-history
