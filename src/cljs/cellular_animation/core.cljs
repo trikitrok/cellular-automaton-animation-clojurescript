@@ -1,11 +1,12 @@
 (ns cellular-animation.core
-    (:require [reagent.core :as reagent]
-              [re-frame.core :as re-frame]
-              [devtools.core :as devtools]
-              [cellular-animation.register-handlers]
-              [cellular-animation.subs]
-              [cellular-animation.views :as views]
-              [cellular-animation.config :as config]))
+  (:require
+    [reagent.core :as reagent]
+    [re-frame.core :as re-frame]
+    [devtools.core :as devtools]
+    [cellular-animation.register-handlers]
+    [cellular-animation.subs]
+    [cellular-animation.views :as views]
+    [cellular-animation.config :as config]))
 
 
 (defn dev-setup []
