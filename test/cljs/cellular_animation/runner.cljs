@@ -1,5 +1,5 @@
 (ns cellular-animation.runner
     (:require [doo.runner :refer-macros [doo-tests]]
-              [cellular-animation.core-test]))
+              [cellular-animation.rules-test]))
 
-(doo-tests 'cellular-animation.core-test)
+(doo-tests 'cellular-animation.rules-test)
