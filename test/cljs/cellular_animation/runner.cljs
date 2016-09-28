@@ -1,9 +1,11 @@
 (ns cellular-animation.runner
-    (:require
-      [doo.runner :refer-macros [doo-tests]]
-              [cellular-animation.rules-test]
-              [cellular-animation.evolution-test]))
+  (:require
+    [doo.runner :refer-macros [doo-tests]]
+    [cellular-animation.rules-test]
+    [cellular-animation.evolution-test]
+    [cellular-animation.evolve-handler-test]))
 
 (doo-tests
   'cellular-animation.rules-test
-  'cellular-animation.evolution-test)
+  'cellular-animation.evolution-test
+  'cellular-animation.evolve-handler-test)

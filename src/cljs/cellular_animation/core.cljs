@@ -2,7 +2,7 @@
     (:require [reagent.core :as reagent]
               [re-frame.core :as re-frame]
               [devtools.core :as devtools]
-              [cellular-animation.handlers]
+              [cellular-animation.register-handlers]
               [cellular-animation.subs]
               [cellular-animation.views :as views]
               [cellular-animation.config :as config]))

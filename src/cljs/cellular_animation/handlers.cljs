@@ -1,8 +1,7 @@
 (ns cellular-animation.handlers
-    (:require [re-frame.core :as re-frame]
-              [cellular-animation.db :as db]))
+  (:require
+    [cellular-animation.evolution :as evolution]))
 
-(re-frame/reg-event-db
- :initialize-db
- (fn  [_ _]
-   db/default-db))
+(defn evolve-handler [{:keys [db]} _]
+  {:db (update db :automaton-states (partial evolution/evolve (:rule db)))
+   :dispatch-later [{:ms 100 :dispatch [:evolve-handler]}]})
