@@ -1,4 +1,5 @@
 (ns cellular-animation.db)
 
 (def default-db
-  {:name "re-frame"})
+  {:automaton-states [[0 0 0 1 0 0 0]
+                      [1 0 0 1 0 0 1]]})

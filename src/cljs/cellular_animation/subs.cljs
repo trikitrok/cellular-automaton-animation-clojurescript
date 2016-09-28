@@ -3,6 +3,6 @@
     (:require [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
- :name
+  :automaton-states
  (fn [db]
-   (:name db)))
+   (:automaton-states db)))
