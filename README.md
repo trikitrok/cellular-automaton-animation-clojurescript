@@ -1,6 +1,6 @@
 # cellular-animation
 
-Cellular automata animation using [re-frame](https://github.com/Day8/re-frame).
+Cellular automaton animation using [re-frame](https://github.com/Day8/re-frame).
 
 ## Development Mode
 
