@@ -9,12 +9,13 @@
 (defn- pad-with-zeroes [state]
   (vec (cons 0 (conj state 0))))
 
-(defn- next-state [rule states]
-  (->> (last states)
+(defn- next-state [rule state]
+  (->> state
        pad-with-zeroes
        (evolve-once rule)))
 
 (defn evolve [rule states]
-  (->> (next-state rule states)
+  (->> (last states)
+       (next-state rule)
        (conj (mapv pad-with-zeroes states))
        vec))
