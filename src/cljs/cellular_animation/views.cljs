@@ -10,7 +10,7 @@
     [:span (cell-representations cell-state)]
     {:key (str "cell-state-" state-index "-cell-" cell-index)}))
 
-(defn- states-component [state-index state]
+(defn- render-states [state-index state]
   (with-meta
     [:div
      (map-indexed (partial render-state state-index) state)]
@@ -21,7 +21,7 @@
     (fn []
       [:div
        {:on-click #(re-frame/dispatch [:evolution-started-or-stopped])}
-       (map-indexed states-component @automaton-states)])))
+       (map-indexed render-states @automaton-states)])))
 
 (defn main-panel []
   [automaton-component])
