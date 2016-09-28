@@ -10,5 +10,7 @@
     db/default-db))
 
 (re-frame/reg-event-fx
-  :evolve-handler
-  handlers/evolve-handler)
+  :evolution-started-or-stopped handlers/start-stop-evolution)
+
+(re-frame/reg-event-fx
+  :evolve handlers/evolve-handler)

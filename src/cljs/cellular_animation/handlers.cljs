@@ -3,5 +3,11 @@
     [cellular-animation.evolution :as evolution]))
 
 (defn evolve-handler [{:keys [db]} _]
-  {:db (update db :automaton-states (partial evolution/evolve (:rule db)))
-   :dispatch-later [{:ms 100 :dispatch [:evolve-handler]}]})
+  (if (:evolving db)
+    {:db (update db :automaton-states (partial evolution/evolve (:rule db)))
+     :dispatch-later [{:ms 100 :dispatch [:evolve]}]}
+    {:db db}))
+
+(defn start-stop-evolution [{:keys [db]} _]
+  {:db (update db :evolving not)
+   :dispatch [:evolve]})

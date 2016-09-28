@@ -3,7 +3,7 @@
     [re-frame.core :as re-frame]))
 
 (def ^:private cell-representations
-  {0 "_" 1 "x"})
+  {0 "_" 1 "*"})
 
 (defn- render-state [state-index cell-index cell-state]
   (with-meta
@@ -19,7 +19,9 @@
 (defn- automaton-component []
   (let [automaton-states (re-frame/subscribe [:automaton-states])]
     (fn []
-      [:div (map-indexed states-component @automaton-states)])))
+      [:div
+       {:on-click #(re-frame/dispatch [:evolution-started-or-stopped])}
+       (map-indexed states-component @automaton-states)])))
 
 (defn main-panel []
   [automaton-component])
