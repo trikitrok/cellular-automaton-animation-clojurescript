@@ -3,11 +3,11 @@
     [re-frame.core :as re-frame]))
 
 (def ^:private cell-representations
-  {0 "_" 1 "*"})
+  {0 "\u00A0" 1 "*"})
 
 (defn- render-state [state-index cell-index cell-state]
   (with-meta
-    [:span (cell-representations cell-state)]
+    [:span.cell (cell-representations cell-state)]
     {:key (str "cell-state-" state-index "-cell-" cell-index)}))
 
 (defn- render-states [state-index state]

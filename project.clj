@@ -4,10 +4,12 @@
                  [reagent "0.6.0"]
                  [binaryage/devtools "0.8.2"]
                  [figwheel-sidecar "0.5.4-7"]
-                 [re-frame "0.8.0"]]
+                 [re-frame "0.8.0"]
+                 [garden "1.3.2"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-figwheel "0.5.7"]
+            [lein-garden "0.2.8"]
             [lein-doo "0.1.7"]]
 
   :min-lein-version "2.5.3"
@@ -18,6 +20,12 @@
                                     "test/js"]
 
   :figwheel {:css-dirs ["resources/public/css"]}
+
+  :garden {:builds [{:id "screen"
+                     :source-paths ["src/clj"]
+                     :stylesheet cellular-animation.css/screen
+                     :compiler {:output-to "resources/public/css/screen.css"
+                                :pretty-print? true}}]}
 
   :cljsbuild
   {:builds
