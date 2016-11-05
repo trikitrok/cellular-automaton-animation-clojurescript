@@ -1,13 +1,16 @@
 (ns cellular-animation.handlers
   (:require
-    [cellular-animation.evolution :as evolution]))
+    [cellular-animation.evolution :as evolution]
+    [re-frame.core :as re-frame]))
 
-(defn evolve-handler [{:keys [db]} _]
+(defn evolve-handler [db _]
   (if (:evolving db)
-    {:db (update db :automaton-states (partial evolution/evolve (:rule db)))
-     :dispatch-later [{:ms 100 :dispatch [:evolve]}]}
-    {:db db}))
+    (let [db (update db :automaton-states (partial evolution/evolve (:rule db)))]
+      (js/setTimeout (fn [] (re-frame/dispatch [:evolve])) 100)
+      db)
+    db))
 
-(defn start-stop-evolution [{:keys [db]} _]
-  {:db (update db :evolving not)
-   :dispatch [:evolve]})
+(defn start-stop-evolution [db _]
+  (let [db (update db :evolving not)]
+    (re-frame/dispatch [:evolve])
+    db))

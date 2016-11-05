@@ -9,8 +9,10 @@
   (fn [_ _]
     db/default-db))
 
-(re-frame/reg-event-fx
-  :evolution-started-or-stopped handlers/start-stop-evolution)
+(re-frame/reg-event-db
+  :evolution-started-or-stopped
+  handlers/start-stop-evolution)
 
-(re-frame/reg-event-fx
-  :evolve handlers/evolve-handler)
+(re-frame/reg-event-db
+  :evolve
+  handlers/evolve-handler)

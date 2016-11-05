@@ -4,4 +4,4 @@
 (defstyles
   screen
   [:span.cell {:font "15px courier"
-               :color "black"}])
+               :color "red"}])
