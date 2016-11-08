@@ -9,13 +9,13 @@
     (let [initial-states [[1]]
           expected-states [[0 1 0] [1 0 1]]
           db {:automaton-states initial-states :rule rules/rule-90 :evolving true}]
-      (is (= (handlers/evolve-handler {:db db} [])
+      (is (= (handlers/evolve {:db db} [])
              {:db (merge db {:automaton-states expected-states})
               :dispatch-later [{:ms 100 :dispatch [:evolve]}]}))))
 
   (testing "when the automaton is not evolving it does not change its state"
     (let [db {:automaton-states :not-used-initial-states :rule :not-used-rule :evolving false}]
-      (is (= (handlers/evolve-handler {:db db} []) {:db db})))))
+      (is (= (handlers/evolve {:db db} []) {:db db})))))
 
 (deftest start-stop-evolution-test
   (testing "when the automaton is evolving it stops the evolution"

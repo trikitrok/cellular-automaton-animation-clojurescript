@@ -13,4 +13,4 @@
   :evolution-started-or-stopped handlers/start-stop-evolution)
 
 (re-frame/reg-event-fx
-  :evolve handlers/evolve-handler)
+  :evolve handlers/evolve)

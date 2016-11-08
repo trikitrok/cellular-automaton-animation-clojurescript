@@ -2,7 +2,7 @@
   (:require
     [cellular-animation.evolution :as evolution]))
 
-(defn evolve-handler [{:keys [db]} _]
+(defn evolve [{:keys [db]} _]
   (if (:evolving db)
     {:db (update db :automaton-states (partial evolution/evolve (:rule db)))
      :dispatch-later [{:ms 100 :dispatch [:evolve]}]}
