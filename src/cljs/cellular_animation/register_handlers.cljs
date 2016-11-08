@@ -19,5 +19,5 @@
 (re-frame/reg-event-db
   :evolve
   (partial
-    handlers/evolve-handler
+    handlers/evolve
     dispatchers/dispatch-later))

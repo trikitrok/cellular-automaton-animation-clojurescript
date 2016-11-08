@@ -14,7 +14,7 @@
           db {:automaton-states initial-states :rule rules/rule-90 :evolving true}
           args (atom [])
           dispatch-later-fn (make-spy args)
-          evolve-handler (partial handlers/evolve-handler dispatch-later-fn)
+          evolve-handler (partial handlers/evolve dispatch-later-fn)
           resulting-db (evolve-handler db :not-used-event)]
       (is (= resulting-db (merge db {:automaton-states expected-states})))
       (let [first-call-args (nth @args 0)]
@@ -26,7 +26,7 @@
   (let [db :some-db
         args (atom [])
         dispatch-later-fn (make-spy args)
-        evolve-handler (partial handlers/evolve-handler dispatch-later-fn)
+        evolve-handler (partial handlers/evolve dispatch-later-fn)
         resulting-db (evolve-handler db :not-used-event)]
     (is (= resulting-db db))
     (is (zero? (count @args)))))
@@ -36,8 +36,8 @@
     (let [db {:evolving true}
           args (atom [])
           dispatch (make-spy args)
-          start-stop-evolution (partial handlers/start-stop-evolution dispatch)
-          resulting-db (start-stop-evolution db :not-used-event)]
+          start-stop-evolution-handler (partial handlers/start-stop-evolution dispatch)
+          resulting-db (start-stop-evolution-handler db :not-used-event)]
       (is (= resulting-db (assoc db :evolving false)))
       (let [first-call-args (nth @args 0)]
         (is (= (count first-call-args) 1))
@@ -47,8 +47,8 @@
     (let [db {:evolving false}
           args (atom [])
           dispatch (make-spy args)
-          start-stop-evolution (partial handlers/start-stop-evolution dispatch)
-          resulting-db (start-stop-evolution db :not-used-event)]
+          start-stop-evolution-handler (partial handlers/start-stop-evolution dispatch)
+          resulting-db (start-stop-evolution-handler db :not-used-event)]
       (is (= resulting-db (assoc db :evolving true)))
       (let [first-call-args (nth @args 0)]
         (is (= (count first-call-args) 1))
